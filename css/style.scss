@@ -1,0 +1,189 @@
+@import "compass";
+@import url(https://fonts.googleapis.com/css?family=Abel);
+// font-family
+$baseFontFamily :"游ゴシック", YuGothic, "メイリオ",Verdana, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+
+// colors
+$baseColor: #fdfcf6;
+$subColor: #E2D2E5;
+$keyColor: #14c0c9;
+$fontColor: #4c4c4c;
+
+
+/* Base
+------------------------------------------------------------*/
+html{
+  font-size: 62.5%;
+}
+
+body{
+  color: $fontColor;
+  font-size: 1.4rem;
+  font-family: $baseFontFamily;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  background-color: $baseColor;
+}
+
+a {
+  @include link-colors($keyColor, darken($keyColor, 10%), lighten($keyColor, 5%), darken($keyColor, 10%));
+  text-decoration: none;
+}
+
+/* Align
+------------------------------------------------------------*/
+.text-center {
+  text-align: center;
+}
+
+/* Layout
+------------------------------------------------------------*/
+.block-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Font
+------------------------------------------------------------*/
+.abel {
+  font-family: 'Abel', sans-serif;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* Contents
+------------------------------------------------------------*/
+// Common Styles
+.header-image {
+  width: 100%;
+  height: 250px;
+  background-image: url("../images/photo.jpg");
+  background-size: cover;
+}
+
+header {
+  width: 60%;
+  margin: 20px auto;
+  padding: 0;
+  span {
+    display: block;
+    font-size: 4.2em;
+    color: $keyColor;
+  }
+  p {
+    font-size: 1.6rem;
+  }
+}
+
+section {
+  padding: 40px 0;
+  .container {
+    width: 80%;
+    @extend .block-center;
+  }
+  h2 {
+    @extend .abel;
+    font-size: 3.2rem;
+    @extend .uppercase;
+  }
+}
+
+// Skills
+#skills {
+  .container {
+    @include display-flex;
+    justify-content: space-between;
+    @include flex-direction(column);
+  }
+  h2 {
+    color: $fontColor;
+    margin-bottom: 30px;
+  }
+  .skill-box {
+    @include flex(1);
+    margin: 10px 0;
+    padding: 0;
+    background-color: $subColor;
+    @include border-radius(4px);
+    @include box-sizing(border-box);
+  }
+  h3 {
+    @extend .abel;
+    @extend .uppercase;
+    color: $fontColor;
+    margin-bottom:10px;
+    font-size: 2.4rem;
+    font-weight: bold;
+  }
+  .box-title {
+    width: 100%;
+    margin: 0;
+    background-color: $keyColor;
+  }
+  p {
+    padding: 20px;
+  }
+}
+
+
+/* Sample
+------------------------------------------------------------*/
+#sample {
+  background-color: $keyColor;
+  h2 {
+    margin-bottom: 20px;
+  }
+  .button-sample {
+    margin: auto;
+    text-align: center;
+    padding: 5px 0;
+    width: 180px;
+    display: block;
+    color: $fontColor;
+    font-weight: bold;
+    background-color: $subColor;
+    @extend .abel;
+    @extend .uppercase;
+    @include border-radius(4px);
+    font-size: 1rem;
+  }
+}
+
+// PC
+@media (min-width: 769px) {
+  /* Base
+  ------------------------------------------------------------*/
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  // image
+  #header{
+    height: 500px;
+  }
+
+  // Skills
+  #skills {
+    .container {
+      @include flex-direction(row);
+      justify-content: space-between;
+    }
+    .skill-box {
+      margin: 0 30px;
+    }
+  }
+  // Sample
+  #sample {
+    a {
+      .button-sample {
+        &:hover {
+          background-color: darken($subColor, 10%);
+        }
+      }
+    }
+  }
+}
